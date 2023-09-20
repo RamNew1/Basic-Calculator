@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Basic Calculator</title>
+</head>
+<body>
+    <h2 style="text-align: center;">Basic Claculator</h2>
+    <hr style="width: 100%;border: 1px solid black;">
+    <div class="container">
+        <input type="text" id="display" readonly placeholder="calculation"></input>
+        <input type ='text' class="answer" readonly placeholder="Answer"></input>
+        <div class="buttons">
+            <button class='btn' onclick="clearScreen()" style="color: white;background: red;">AC</button>
+            <button class='btn' onclick="addToDisplay('/')">/</button>
+            <button class='btn' onclick="addToDisplay('*')">*</button>
+            <button class='btn' onclick="addToDisplay('-')">-</button>
+            <button class='btn' onclick="addToDisplay('7')">7</button>
+            <button class='btn' onclick="addToDisplay('8')">8</button>
+            <button class='btn' onclick="addToDisplay('9')">9</button>
+            <button class='btn' onclick="addToDisplay('+')" style="height: 70px;">+</button>
+            <button class='btn' onclick="addToDisplay('4')">4</button>
+            <button class='btn' onclick="addToDisplay('5')">5</button>
+            <button class='btn' onclick="addToDisplay('6')">6</button><br>
+            <button class='btn' onclick="addToDisplay('1')">1</button>
+            <button class='btn' onclick="addToDisplay('2')">2</button>
+            <button class='btn' onclick="addToDisplay('3')">3</button>
+            <button class='btn' onclick="calculate()" style="height: 70px;background: rgb(108, 108, 246);">=</button>
+            <button class='btn' onclick="addToDisplay('0')" style="width: 126px;">0</button><br>
+            <button class='btn' onclick="addToDisplay('.')">.</button><br>
+            <button class="btn" onclick="Answer()" style="width: 126px;">Answer</button><br>
+            <button class="btn" onclick="backspace()" style="width: 126px;">⌫</button>
+        </div>
+    </div>
+    <script>
+        let display = document.getElementById('display');
+        let answer = document.querySelector('.answer')
+
+        function addToDisplay(text){
+            display.value += text;
+        }
+        function clearScreen(){
+            display.value = '';
+            answer.value = '';
+        }
+        function calculate(){
+           try{
+             answer.value= eval(display.value);
+           }
+           catch{
+            display.value = 'error';
+           }
+        }
+        function Answer(){
+            display.value = answer.value;
+            answer.value='';
+        }
+        function backspace(){
+            display.value = display.value.slice(0 , -1);
+            if(display.value === ""){
+                answer.value = '';
+            }
+        }
+        
+    </script>
+</body>
+</html>
